@@ -18,7 +18,7 @@
         <div class="row mt-5">
             <div class="col-md-6">
                 <h1>CTEC 127 - Winter 2022</h1>
-                <h2>YOUR NAME GOES HERE</h2>
+                <h2>Matt Aragon</h2>
                 <div class="alert alert-info" role="alert">
                     <strong>PLEASE NOTE:</strong> You must enter information for all of the fields
                 </div>
@@ -50,6 +50,41 @@
                     $firstName = $_POST["firstname"];
 
                     // Your code goes below this comment
+                    // My comments and code:
+                    // Create variables to store the info that is submitted with Post.
+                    $lastName = $_POST["lastname"];
+                    $email = $_POST["email"];
+                    $comments = $_POST["comments"];
+                    // Create an empty array to push stuff in it later.
+                    $values = [];
+                    // Use decision logic to see if something is entered and if it is push that info into
+                    // the empty array we created.
+                    if (!empty($firstName)) {
+                        array_push($values, "First Name:" . " " . $firstName);
+                    }
+                    if (!empty($lastName)) {
+                        array_push($values, "Last Name:" . " " . $lastName);
+                    }
+                    if (!empty($email)) {
+                        array_push($values, "Email:" . " " . $email);
+                    }
+                    if (!empty($comments)) {
+                        array_push($values, "Comments:" . " " . $comments);
+                    }
+                    if (count($values) > 3) {
+                        echo "<p>Thanks for filling out our form!</p>";
+                        echo "<p>Here is the information you entered.</p>";
+                        echo "<ul>";
+                        // Use a for loop to display the contents in an unordered list to the user.
+                        for ($i = 0; $i < count($values); $i++) {
+                            echo "<li>" . $values[$i] . "</li>";
+                        }
+                        echo "</ul>";
+                    }
+                    // Use more decision logic to display a warning if there's a submission with empty fields.
+                    if (empty($firstName && $lastName && $email && $comments)) {
+                        echo "<p><em>*You must fill out all fields in the form.</em></P>";
+                    }
                 }
                 ?>
                 <form action="ctec-127-lab-3.php" method="post">
@@ -60,15 +95,18 @@
                     </div>
                     <div class="mb-3">
                         <label for="lastname" class="form-label">Last Name</label>
-                        <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Enter your last name">
+                        <!-- Use a php statement to make the input sticky. -->
+                        <input type="text" name="lastname" class="form-control" id="lastname" placeholder="Enter your last name" value="<?php echo isset($_POST["lastname"]) ? $_POST["lastname"] : ''; ?>">
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email address">
+                        <!-- Use a php statement to make the input sticky. -->
+                        <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email address" value="<?php echo isset($_POST["email"]) ? $_POST["email"] : ''; ?>">
                     </div>
                     <div class="mb-3">
                         <label for="comments" class="form-label">Comments</label>
-                        <textarea name="comments" class="form-control" id="comments" rows="3" placeholder="Enter any feedback or comments that you have"></textarea>
+                        <!-- Since there is no value in a text area, place the php code in between the opening and closing tags -->
+                        <textarea name="comments" class="form-control" id="comments" rows="3" placeholder="Enter any feedback or comments that you have"><?php echo isset($_POST["comments"]) ? $_POST["comments"] : ''; ?></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
