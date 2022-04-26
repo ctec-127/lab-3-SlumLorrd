@@ -108,7 +108,7 @@
                         <!-- Since there is no value in a text area, place the php code in between the opening and closing tags -->
                         <textarea name="comments" class="form-control" id="comments" rows="3" placeholder="Enter any feedback or comments that you have"><?php echo isset($_POST["comments"]) ? $_POST["comments"] : ''; ?></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit" class="btn btn-info">Submit</button>
                 </form>
             </div>
         </div>
