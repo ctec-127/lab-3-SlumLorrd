@@ -18,7 +18,7 @@
         <div class="row mt-5">
             <div class="col-md-6">
                 <h1>CTEC 127 - Winter 2022</h1>
-                <h2>Matt Aragon</h2>
+                <h2>Matthew Aragon</h2>
                 <div class="alert alert-info" role="alert">
                     <strong>PLEASE NOTE:</strong> You must enter information for all of the fields
                 </div>
